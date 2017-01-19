@@ -1,0 +1,25 @@
+{
+  "name": "learns",
+  "version": "1.0.0",
+  "description": "learn sth",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./mongoose/001_getting_start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YuanWing/Learns.git"
+  },
+  "keywords": [
+    "Mongoose"
+  ],
+  "author": "Wing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YuanWing/Learns/issues"
+  },
+  "homepage": "https://github.com/YuanWing/learn#readme",
+  "devDependencies": {
+    "mongoose": "^4.7.7"
+  }
+}

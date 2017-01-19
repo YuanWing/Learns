@@ -37,7 +37,7 @@ db.once('open', () => {
 
 const UserSchema = mongoose.Schema({
   name: String,
-  age: Number
+  age: Number,
 });
 // - 定义了一个 UserSchema 的 Schema，她有两个字;
 // - 字段 name 的类型是 String，字段 age 的类型是 Number
@@ -49,7 +49,7 @@ const User = mongoose.model('User', UserSchema);
 
 const wing = new User({
   name: 'Wing',
-  age: 18
+  age: 18,
 });
 // - 创建了一条新数据，name = 'Wing', age = 18，这里值的类型要跟我们上边的 Schema 一样哟
 // - 类型如果不一样，默认会进行一些简单的类型转换，转换不成功会当作 undefined
@@ -66,7 +66,7 @@ console.log(`${wing.name} is ${wing.age}`);
 
 // - 在 Schema 上我们还可以定义方法，给 model 实例调用
 
-UserSchema.methods.eat = function (foodName = 'Oops') {
+UserSchema.methods.eat = function eat(foodName = 'Oops') {
   // - 这里我范了个错，方法定义的时候我采用了箭头函数，结果 this 指向的是一个空对象，而不是我们的 model 实例
   const myName = this.name || 'I';
   console.log(`${myName} eat ${foodName}!`);
@@ -80,7 +80,7 @@ const YoungUser = mongoose.model('YoungUser', UserSchema);
 
 const youngWing = new YoungUser({
   name: 'Young.Wing',
-  age: 16
+  age: 16,
 });
 youngWing.eat();
 // - 正常命令行下输出：Young.Wing eat Oops!
@@ -161,7 +161,7 @@ User.find({}, (err, docs) => {
     console.log('Find success!');
     console.log(docs);
   }
-})
+});
 // - 第一个参数是查询的条件，我们这里传了一个空对象，则查询 User 集合里面的所有数据
 // - docs 是一个数组哟
 

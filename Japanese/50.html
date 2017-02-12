@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>日语50音图学习</title>
+  <script src='./50.js'></script>
+  <style>
+    body {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    a {
+      display: flex;
+      width: 20%;
+      box-sizing: border-box;
+      border-right: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      background-color: #fefefe;
+    }
+    a:nth-child(5n - 1),
+    a:nth-child(5n - 3) {
+      background-color: #f1f1f1;
+    }
+    .kana {
+      flex: 1;
+    }
+    .kana div {
+      padding: 10px 0 10px 10px;
+    }
+    .kana div:first-child {
+      padding-bottom: 0;
+    }
+    .roman {
+      padding: 10px;
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" class="container"></div>
+  <script>
+    var fra = document.createDocumentFragment();
+    function createEl(tagName) {
+      return document.createElement(tagName);
+    }
+    function createItem(item) {
+      var a = createEl('a');
+      var hiragana = createEl('div');
+      var katakana = createEl('div');
+      var roman = createEl('div');
+      var kana = createEl('div');
+
+      kana.className = 'kana';
+      roman.className = 'roman';
+
+      hiragana.innerHTML = item.hiragana;
+      katakana.innerHTML = item.katakana;
+      roman.innerHTML = item.roman;
+
+      kana.appendChild(hiragana);
+      kana.appendChild(katakana);
+      a.appendChild(kana);
+      a.appendChild(roman);
+
+      fra.appendChild(a);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      yin.map(function(items) {
+        items.map(function(item) {
+          createItem(item);
+        });
+      });
+      document.getElementById('container').appendChild(fra);
+    });
+  </script>
+</body>
+</html>
